@@ -3,7 +3,7 @@ import React from 'react';
 class RestaurantItem extends React.Component {
 
     render() {
-        const {id, address, city, state, postal_code, image_url, name, price} = this.props.restaurant;
+        const {id, address, city, state, postal_code, image_url, name, price, area} = this.props.restaurant;
         const fullAddress = `${address}, ${city} ${state}, ${postal_code}`;
         return (
             <li key={id} className="restaurant-item">
@@ -12,6 +12,7 @@ class RestaurantItem extends React.Component {
                     <div className="name">{name}</div>
                     <div className="address">{fullAddress}</div>
                     <div className="price">Price: {price}</div>
+                    <div className="price">Area: {area}</div>
                 </div>
             </li>
         )

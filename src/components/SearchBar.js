@@ -17,7 +17,6 @@ class SearchBar extends React.Component {
     };
 
     render() {
-        // const { handleOnChangeCity } = this.props
         return(
             <div className='city-input'>
                 <form onSubmit={this.onFormSubmit}>
@@ -31,7 +30,6 @@ class SearchBar extends React.Component {
                         value={this.state.city} 
                     />
                 </form>
-                {/* <button onClick={handleClick}>Add Todo</button> */}
             </div>
         )
     }
