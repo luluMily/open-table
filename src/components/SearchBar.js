@@ -37,9 +37,11 @@ class SearchBar extends React.Component {
                         type="text"
                         name="city"
                         id="city-input"
-                        placeholder="Enter a city and prese enter"
+                        placeholder="Enter a city then prese enter"
                         onChange={this.onCityInputChange}
                         value={this.state.city} 
+                        aria-label="Pleae enter a city then press enter"
+                        aria-required="true"
                     />
                 </form>
                 <FilterBar city={this.state.city} />
