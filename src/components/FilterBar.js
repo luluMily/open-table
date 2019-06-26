@@ -37,10 +37,10 @@ class FilterBar extends React.Component {
                         type="text"
                         name="filter"
                         id="refine-input"
-                        placeholder="Enter restaurant name/address/area to refine result then press enter"
+                        placeholder="Enter restaurant name/address/area then press enter"
                         onChange={this.onFilterInputChange}
                         value={this.state.filter} 
-                        aria-label="Enter restaurant name/address/area to refine result then press enter"
+                        aria-label="Enter restaurant name/address/area then press enter"
                     />
                 </form>
             </div>
