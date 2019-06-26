@@ -21,7 +21,11 @@ class FilterBar extends React.Component {
 
     onFormSubmit = e => {
         e.preventDefault();
-        this.props.filterRestaurants(this.state.filter, this.props.city);
+        if (!this.state.filter && !this.props.city) {
+            alert('Please enter a city');
+        } else {
+            this.props.filterRestaurants(this.state.filter, this.props.city);
+        }
     };
 
     render() {
@@ -33,7 +37,7 @@ class FilterBar extends React.Component {
                         type="text"
                         name="filter"
                         id="refine-input"
-                        placeholder="Enter restaurant name/address/area to refine result"
+                        placeholder="Enter restaurant name/address/area to refine result and press enter"
                         onChange={this.onFilterInputChange}
                         value={this.state.filter} 
                     />

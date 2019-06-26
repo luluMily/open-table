@@ -21,7 +21,11 @@ class SearchBar extends React.Component {
 
     onFormSubmit = e => {
         e.preventDefault();
-        this.props.searchRestaurants(this.state.city);
+        if (!this.state.city) {
+            alert('Please enter a city');
+        } else {
+            this.props.searchRestaurants(this.state.city);
+        }
     };
 
     render() {
@@ -33,7 +37,7 @@ class SearchBar extends React.Component {
                         type="text"
                         name="city"
                         id="city-input"
-                        placeholder="Enter a city"
+                        placeholder="Enter a city and prese enter"
                         onChange={this.onCityInputChange}
                         value={this.state.city} 
                     />
