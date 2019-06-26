@@ -1,7 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { searchRestaurants } from '../actions/searchRestaurants';
+import { bindActionCreators } from 'redux';
+import FilterBar from './FilterBar';
 
 class SearchBar extends React.Component {
-    state = { city: '' };
+    constructor(props) {
+        super(props);
+        this.state = {
+            city: ''
+        }
+    }
 
     onCityInputChange = e => {
         this.setState({
@@ -12,8 +21,7 @@ class SearchBar extends React.Component {
 
     onFormSubmit = e => {
         e.preventDefault();
-
-        this.props.onFormSubmit(this.state.city);
+        this.props.searchRestaurants(this.state.city);
     };
 
     render() {
@@ -30,9 +38,14 @@ class SearchBar extends React.Component {
                         value={this.state.city} 
                     />
                 </form>
+                <FilterBar city={this.state.city} />
             </div>
         )
     }
 }
 
-export default SearchBar;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ searchRestaurants: searchRestaurants }, dispatch);
+}
+
+export default connect(null, { searchRestaurants })(SearchBar);

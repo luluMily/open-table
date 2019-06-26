@@ -1,7 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { filterRestaurants } from '../actions/filterRestaurants';
+import { bindActionCreators } from 'redux';
+
 
 class FilterBar extends React.Component {
-    state = { filter: '' };
+    constructor(props) {
+        super(props);
+        this.state = {
+            filter: ''
+        }
+    }
 
     onFilterInputChange = e => {
         this.setState({
@@ -12,8 +21,7 @@ class FilterBar extends React.Component {
 
     onFormSubmit = e => {
         e.preventDefault();
-
-        this.props.onFilterFormSubmit(this.state.filter);
+        this.props.filterRestaurants(this.state.filter, this.props.city);
     };
 
     render() {
@@ -35,4 +43,8 @@ class FilterBar extends React.Component {
     }
 }
 
-export default FilterBar;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ filterRestaurants: filterRestaurants }, dispatch);
+}
+
+export default connect(null, { filterRestaurants })(FilterBar);
